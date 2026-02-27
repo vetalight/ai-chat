@@ -14,8 +14,8 @@ from langchain_core.messages import HumanMessage
 
 load_dotenv()
 
-# llm = ChatOpenAI(api_key=st.secrets["openai_api_key"])
-llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+llm = ChatOpenAI(api_key=st.secrets["openai_api_key"])
+# llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 chat_history = []
 
 # Context for question
@@ -49,7 +49,8 @@ text_splitter = CharacterTextSplitter(chunk_size=30,  chunk_overlap=0, separator
 chunks = text_splitter.split_documents(documents)
 vectorstore = Chroma.from_documents(
     chunks,
-    embedding=OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY")),
+    # embedding=OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY")),
+    embedding=OpenAIEmbeddings(api_key=st.secrets["openai_api_key"]),
 )
 retriever = vectorstore.as_retriever()
 

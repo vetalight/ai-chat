@@ -4,6 +4,7 @@
     2. python -m venv env
     3. env\Scripts\activate
     4. pip install -r requirements.tx
+    5. pip freeze > requirements.txt
 
 ## Start Application
 streamlit run app.py

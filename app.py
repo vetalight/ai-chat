@@ -11,7 +11,8 @@ st.title('My first Streamlit app')
 
 load_dotenv()
 
-API_KEY = os.getenv("OPENAI_API_KEY")
+# API_KEY = os.getenv("OPENAI_API_KEY")
+API_KEY = st.secrets["openai_api_key"]
 openai.api_key = API_KEY
 
 chat_placeholder = st.empty()
